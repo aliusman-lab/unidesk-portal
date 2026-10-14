@@ -228,8 +228,12 @@
 
           <div class="course-card-bottom">
             <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 500;">${course.department}</span>
-            <button type="button" class="btn btn-secondary btn-sm view-course-btn" data-id="${course.id}">
-              Course Details
+            <button type="button" class="view-course-btn" data-id="${course.id}">
+              <span>Course Details</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
             </button>
           </div>
         </div>

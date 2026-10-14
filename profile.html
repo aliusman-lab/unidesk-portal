@@ -1,638 +1,330 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Profile & Registration | Smart Campus Portal</title>
-  <meta name="description" content="Manage student enrollment details, personal university records, credentials, and real-time inline validation form.">
+  <title>Student Profile | UniDesk</title>
+  <meta name="description" content="Manage student enrollment details, academic records, credentials, and settings.">
   <link rel="stylesheet" href="./css/style.css">
+  <style>
+    .profile-summary-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+    .profile-avatar-large {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: var(--color-lime);
+      color: var(--color-lime-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      border: 3px solid #ffffff;
+    }
+    .profile-details-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--border-light);
+      padding-top: 1.25rem;
+      text-align: left;
+    }
+    .profile-detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+    }
+    .detail-label {
+      color: var(--text-muted);
+    }
+    .detail-val {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Top Portal Header -->
-  <header class="portal-header">
-    <div class="container header-inner">
-      <div class="brand-wrapper">
-        <a href="index.html" style="display: flex; align-items: center; gap: 0.85rem;" aria-label="Smart Campus Portal Home">
-          <div class="brand-crest">SC</div>
-          <div class="brand-text">
-            <span class="brand-title">SMART CAMPUS</span>
-            <span class="brand-subtitle">Student Academic Portal</span>
-          </div>
+  <!-- App Layout Shell -->
+  <div class="app-layout">
+
+    <!-- Left Sidebar Navigation -->
+    <aside class="app-sidebar" id="appSidebar">
+      <div>
+        <a href="index.html" class="sidebar-brand">
+          <span class="sidebar-brand-name">UniDesk</span>
         </a>
+
+        <ul class="sidebar-nav">
+          <li>
+            <a href="index.html" class="sidebar-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+                <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+              </svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="schedule.html" class="sidebar-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span>Schedule</span>
+            </a>
+          </li>
+          <li>
+            <a href="tasks.html" class="sidebar-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <span>Tasks</span>
+            </a>
+          </li>
+          <li>
+            <a href="courses.html" class="sidebar-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                <path d="M9 14l2 2 4-4"></path>
+              </svg>
+              <span>Tests</span>
+            </a>
+          </li>
+          <li>
+            <a href="index.html#announcementsSection" class="sidebar-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+              <span>Reports</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="sidebar-link" onclick="openChatDemo()">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <span>Chat</span>
+            </a>
+          </li>
+          <li>
+            <a href="tasks.html" class="sidebar-link">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M11 4H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
+              <span>Notes</span>
+            </a>
+          </li>
+        </ul>
       </div>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="portal-nav" aria-label="Primary Navigation">
-        <a href="index.html" class="nav-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
-          Dashboard
-        </a>
-        <a href="courses.html" class="nav-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-          Courses
-        </a>
-        <a href="schedule.html" class="nav-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          Schedule
-        </a>
-        <a href="tasks.html" class="nav-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-          Tasks
-        </a>
-        <a href="profile.html" class="nav-link active">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          Profile
-        </a>
-      </nav>
+      <!-- Bottom Settings & Logout -->
+      <ul class="sidebar-bottom">
+        <li>
+          <a href="profile.html" class="sidebar-link active">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            <span>Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" class="sidebar-link" onclick="handleLogout()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Log out</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
 
-      <!-- Header Controls -->
-      <div class="header-actions">
-        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    <!-- Main Content Workspace -->
+    <main class="app-main">
+
+      <!-- Top Header -->
+      <header class="top-bar">
+        <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
         </button>
 
-        <a href="profile.html" class="student-nav-pill" title="View Profile">
-          <div class="student-avatar" id="headerAvatar">AU</div>
-          <div class="student-nav-meta">
-            <span class="student-nav-name" id="headerStudentName">Ali Usman</span>
-            <span class="student-nav-id" id="headerStudentReg">FA24-BCS-042</span>
-          </div>
-        </a>
-
-        <!-- Mobile Menu Toggle -->
-        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile Drawer Menu -->
-  <div class="mobile-drawer" id="mobileDrawer">
-    <div class="mobile-drawer-content">
-      <div style="display: flex; align-items: center; gap: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color);">
-        <div class="student-avatar">AU</div>
-        <div>
-          <div class="student-nav-name" style="font-size: 0.95rem;">Ali Usman</div>
-          <div class="student-nav-id">FA24-BCS-042 • Computer Science</div>
+        <div class="search-form">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" class="search-input" id="globalSearchInput" placeholder="Search profile records..." aria-label="Search profile">
         </div>
-      </div>
-      <a href="index.html" class="nav-link">Dashboard</a>
-      <a href="courses.html" class="nav-link">Courses</a>
-      <a href="schedule.html" class="nav-link">Schedule</a>
-      <a href="tasks.html" class="nav-link">Tasks</a>
-      <a href="profile.html" class="nav-link active">Profile</a>
-    </div>
-  </div>
 
-  <!-- Main Profile & Registration Content -->
-  <main class="main-content">
-    <div class="container">
-      
-      <!-- Page Header -->
-      <section class="page-header">
-        <div class="page-header-row">
-          <div>
-            <h1 class="page-title">Student Registration & Profile</h1>
-            <p class="page-desc">Review your official student identification record or update enrollment credentials with real-time field validation.</p>
-          </div>
-          <div class="header-badges">
-            <span class="badge badge-success">Identity Verified</span>
-            <span class="badge badge-primary">Active Matriculation</span>
-          </div>
+        <div class="top-bar-actions">
+          <button type="button" class="icon-btn theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle theme">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <a href="profile.html" class="user-profile-btn" title="View Profile">
+            <span class="user-name" id="topStudentName">Ali Usman</span>
+            <img class="user-avatar" id="topAvatarImg" src="data:image/jpeg;base64,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" alt="Student avatar">
+          </a>
+
+          <button type="button" class="icon-btn" aria-label="Notifications" onclick="showNotificationAlert()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Page Banner -->
+      <section class="page-title-banner">
+        <div>
+          <h1 class="page-title-main">Student Profile & Settings</h1>
+          <p class="page-title-sub">Manage academic details, personal identification, and security.</p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <span class="badge-lime-high">Verified Account</span>
         </div>
       </section>
 
-      <!-- 2-Column Responsive Layout -->
-      <div class="profile-layout">
+      <!-- 2-Column Profile Layout -->
+      <div style="display: grid; grid-template-columns: 320px 1fr; gap: 1.25rem; align-items: start;">
         
-        <!-- Left Column: Profile Card Summary -->
-        <aside class="profile-card-summary" aria-label="Student Identity Card">
+        <!-- Profile Identity Card -->
+        <div class="ui-card profile-summary-card">
           <div class="profile-avatar-large" id="profileSummaryAvatar">AU</div>
-          
-          <div>
-            <h2 style="font-size: 1.35rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.2rem;" id="summaryFullName">
-              Ali Usman
-            </h2>
-            <div style="font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; color: var(--accent-primary);" id="summaryRegNumber">
-              FA24-BCS-042
-            </div>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.35rem;" id="summaryDeptText">
-              Department of Computer Science
-            </p>
-          </div>
+          <h2 style="font-size: 1.3rem; font-weight: 800;" id="summaryFullName">Ali Usman</h2>
+          <span class="badge-todo" id="summaryRegNumber" style="margin-top: 0.35rem;">FA24-BCS-042</span>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.45rem;" id="summaryDeptText">Department of Computer Science</p>
 
-          <div class="profile-details-group">
+          <div class="profile-details-list">
             <div class="profile-detail-row">
-              <span class="profile-detail-label">Current Term</span>
-              <span class="profile-detail-val" id="summarySemester">5th Semester</span>
+              <span class="detail-label">Current Term</span>
+              <span class="detail-val" id="summarySemester">5th Semester</span>
             </div>
             <div class="profile-detail-row">
-              <span class="profile-detail-label">Cumulative GPA</span>
-              <span class="profile-detail-val" style="color: var(--success); font-weight: 700;">3.78 / 4.00</span>
+              <span class="detail-label">Cumulative GPA</span>
+              <span class="detail-val" style="color: var(--color-lime-text); background: var(--color-lime); padding: 2px 8px; border-radius: 9999px; font-weight: 700;">4.7</span>
             </div>
             <div class="profile-detail-row">
-              <span class="profile-detail-label">Credits Completed</span>
-              <span class="profile-detail-val">76 / 134 Credits</span>
+              <span class="detail-label">On-time Rate</span>
+              <span class="detail-val" style="font-weight: 700;">96%</span>
             </div>
             <div class="profile-detail-row">
-              <span class="profile-detail-label">Enrolled This Term</span>
-              <span class="profile-detail-val">18 Credit Hours</span>
+              <span class="detail-label">Completed</span>
+              <span class="detail-val">76 / 134 Credits</span>
             </div>
             <div class="profile-detail-row">
-              <span class="profile-detail-label">University Email</span>
-              <span class="profile-detail-val" style="font-size: 0.78rem;" id="summaryEmail">ali.usman@campus.edu.pk</span>
+              <span class="detail-label">Email</span>
+              <span class="detail-val" style="font-size: 0.8rem;" id="summaryEmail">ali.usman@campus.edu</span>
             </div>
             <div class="profile-detail-row">
-              <span class="profile-detail-label">Contact Number</span>
-              <span class="profile-detail-val" id="summaryPhone">+92 300 1234567</span>
+              <span class="detail-label">Phone</span>
+              <span class="detail-val" id="summaryPhone">+92 300 1234567</span>
             </div>
           </div>
-        </aside>
-
-        <!-- Right Column: Registration / Profile Form with Real-time Validation -->
-        <section class="form-panel" aria-labelledby="formTitle">
-          <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
-            <h2 id="formTitle" style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">
-              Edit Academic Profile & Credentials
-            </h2>
-            <p style="font-size: 0.85rem; color: var(--text-secondary);">
-              All fields are verified in real time as you type. Changes are stored locally and will synchronize across all portal pages.
-            </p>
-          </div>
-
-          <form id="studentRegistrationForm" novalidate>
-            <div class="form-grid-2">
-              
-              <!-- 1. Full Name -->
-              <div class="form-group">
-                <label for="fullNameInput" class="form-label">
-                  <span>Full Name</span>
-                  <span class="required-indicator">*</span>
-                </label>
-                <div class="form-input-wrap">
-                  <input 
-                    type="text" 
-                    id="fullNameInput" 
-                    class="form-input" 
-                    placeholder="e.g. Ali Usman" 
-                    required 
-                    autocomplete="name"
-                  />
-                </div>
-                <div class="feedback-msg" id="nameFeedback" aria-live="polite"></div>
-              </div>
-
-              <!-- 2. Registration Number -->
-              <div class="form-group">
-                <label for="regNumberInput" class="form-label">
-                  <span>Registration Number</span>
-                  <span class="required-indicator">*</span>
-                </label>
-                <div class="form-input-wrap">
-                  <input 
-                    type="text" 
-                    id="regNumberInput" 
-                    class="form-input" 
-                    placeholder="e.g. FA24-BCS-042 or 2024-CS-042" 
-                    required 
-                  />
-                </div>
-                <div class="feedback-msg" id="regFeedback" aria-live="polite"></div>
-              </div>
-
-              <!-- 3. University Email -->
-              <div class="form-group">
-                <label for="emailInput" class="form-label">
-                  <span>University Email Address</span>
-                  <span class="required-indicator">*</span>
-                </label>
-                <div class="form-input-wrap">
-                  <input 
-                    type="email" 
-                    id="emailInput" 
-                    class="form-input" 
-                    placeholder="student@campus.edu.pk" 
-                    required 
-                    autocomplete="email"
-                  />
-                </div>
-                <div class="feedback-msg" id="emailFeedback" aria-live="polite"></div>
-              </div>
-
-              <!-- 4. Phone Number -->
-              <div class="form-group">
-                <label for="phoneInput" class="form-label">
-                  <span>Phone Number</span>
-                  <span class="required-indicator">*</span>
-                </label>
-                <div class="form-input-wrap">
-                  <input 
-                    type="tel" 
-                    id="phoneInput" 
-                    class="form-input" 
-                    placeholder="+92 300 1234567 or (555) 019-2834" 
-                    required 
-                    autocomplete="tel"
-                  />
-                </div>
-                <div class="feedback-msg" id="phoneFeedback" aria-live="polite"></div>
-              </div>
-
-              <!-- 5. Academic Department -->
-              <div class="form-group">
-                <label for="deptSelect" class="form-label">
-                  <span>Academic Department</span>
-                  <span class="required-indicator">*</span>
-                </label>
-                <select id="deptSelect" class="select-control" style="width: 100%;" required>
-                  <option value="" disabled>Select Department...</option>
-                  <option value="Computer Science" selected>Department of Computer Science</option>
-                  <option value="Software Engineering">Department of Software Engineering</option>
-                  <option value="Artificial Intelligence">Department of Artificial Intelligence</option>
-                  <option value="Cyber Security">Department of Cyber Security</option>
-                  <option value="Electrical Engineering">Department of Electrical Engineering</option>
-                  <option value="Business Administration">School of Business Administration</option>
-                </select>
-                <div class="feedback-msg" id="deptFeedback" aria-live="polite"></div>
-              </div>
-
-              <!-- 6. Current Semester -->
-              <div class="form-group">
-                <label for="semesterSelect" class="form-label">
-                  <span>Current Semester</span>
-                  <span class="required-indicator">*</span>
-                </label>
-                <select id="semesterSelect" class="select-control" style="width: 100%;" required>
-                  <option value="" disabled>Select Semester...</option>
-                  <option value="1st Semester">1st Semester (Freshman)</option>
-                  <option value="2nd Semester">2nd Semester (Freshman)</option>
-                  <option value="3rd Semester">3rd Semester (Sophomore)</option>
-                  <option value="4th Semester">4th Semester (Sophomore)</option>
-                  <option value="5th Semester" selected>5th Semester (Junior)</option>
-                  <option value="6th Semester">6th Semester (Junior)</option>
-                  <option value="7th Semester">7th Semester (Senior)</option>
-                  <option value="8th Semester">8th Semester (Senior)</option>
-                </select>
-                <div class="feedback-msg" id="semesterFeedback" aria-live="polite"></div>
-              </div>
-
-              <!-- 7. Password -->
-              <div class="form-group">
-                <label for="passwordInput" class="form-label">
-                  <span>Portal Password</span>
-                  <span class="required-indicator">*</span>
-                </label>
-                <div class="form-input-wrap">
-                  <input 
-                    type="password" 
-                    id="passwordInput" 
-                    class="form-input" 
-                    placeholder="Min 8 chars, 1 uppercase, 1 number" 
-                    required 
-                    autocomplete="new-password"
-                  />
-                </div>
-                <!-- Dynamic Password Strength Indicator -->
-                <div class="password-meter" id="passwordMeterGroup" style="display: none;">
-                  <div class="password-meter-bar">
-                    <div class="password-meter-fill" id="passwordMeterFill"></div>
-                  </div>
-                  <span class="password-meter-text" id="passwordMeterText">Strength: Weak</span>
-                </div>
-                <div class="feedback-msg" id="passwordFeedback" aria-live="polite"></div>
-              </div>
-
-              <!-- 8. Confirm Password -->
-              <div class="form-group">
-                <label for="confirmPasswordInput" class="form-label">
-                  <span>Confirm Password</span>
-                  <span class="required-indicator">*</span>
-                </label>
-                <div class="form-input-wrap">
-                  <input 
-                    type="password" 
-                    id="confirmPasswordInput" 
-                    class="form-input" 
-                    placeholder="Re-enter your password" 
-                    required 
-                    autocomplete="new-password"
-                  />
-                </div>
-                <div class="feedback-msg" id="confirmFeedback" aria-live="polite"></div>
-              </div>
-
-            </div>
-
-            <!-- Form Actions -->
-            <div style="display: flex; align-items: center; justify-content: flex-end; gap: 1rem; margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color);">
-              <button type="button" class="btn btn-secondary" id="resetProfileFormBtn">
-                Reset Changes
-              </button>
-              <button type="submit" class="btn btn-primary" id="saveProfileBtn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                Update Profile Record
-              </button>
-            </div>
-          </form>
-        </section>
-
-      </div>
-
-    </div>
-  </main>
-
-  <!-- Clean Academic Footer -->
-  <footer class="portal-footer">
-    <div class="container footer-inner">
-      <div>
-        <div style="font-family: var(--font-display); font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">
-          Smart Campus Academic Portal
         </div>
-        <p style="font-size: 0.8rem; margin: 0;">
-          &copy; 2026 University Registrar & Academic Directorate. All rights reserved.
-        </p>
+
+        <!-- Edit Profile Form -->
+        <div class="ui-card">
+          <div class="card-header-flex">
+            <h2 class="card-title">Edit Profile Information</h2>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+            Update your registered details. Changes will synchronize across all pages instantly.
+          </p>
+
+          <form id="studentRegistrationForm">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label for="fullNameInput" class="form-label">Full Name</label>
+                <input type="text" id="fullNameInput" class="form-control" required />
+              </div>
+
+              <div class="form-group">
+                <label for="regNumberInput" class="form-label">Registration Number</label>
+                <input type="text" id="regNumberInput" class="form-control" required />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label for="emailInput" class="form-label">University Email</label>
+                <input type="email" id="emailInput" class="form-control" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phoneInput" class="form-label">Phone Number</label>
+                <input type="tel" id="phoneInput" class="form-control" required />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label for="departmentSelect" class="form-label">Department</label>
+                <select id="departmentSelect" class="form-control" required>
+                  <option value="Computer Science">Computer Science</option>
+                  <option value="Software Engineering">Software Engineering</option>
+                  <option value="Data Science">Data Science</option>
+                  <option value="Electrical Engineering">Electrical Engineering</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="semesterSelect" class="form-label">Current Semester</label>
+                <select id="semesterSelect" class="form-control" required>
+                  <option value="1st Semester">1st Semester</option>
+                  <option value="2nd Semester">2nd Semester</option>
+                  <option value="3rd Semester">3rd Semester</option>
+                  <option value="4th Semester">4th Semester</option>
+                  <option value="5th Semester" selected>5th Semester</option>
+                  <option value="6th Semester">6th Semester</option>
+                  <option value="7th Semester">7th Semester</option>
+                  <option value="8th Semester">8th Semester</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-view-all-black" style="margin-top: 1.25rem;">Save Changes</button>
+          </form>
+        </div>
+
       </div>
-      <div class="footer-links">
-        <a href="index.html" class="footer-link">Dashboard</a>
-        <a href="courses.html" class="footer-link">Courses</a>
-        <a href="schedule.html" class="footer-link">Timetable</a>
-        <a href="tasks.html" class="footer-link">Assignments</a>
-      </div>
-    </div>
-  </footer>
+
+    </main>
+
+  </div>
 
   <script src="./js/main.js"></script>
-  <script>
-    // Real-Time Inline JavaScript Form Validation (No Alert Boxes)
-    document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('studentRegistrationForm');
-      
-      const nameInput = document.getElementById('fullNameInput');
-      const regInput = document.getElementById('regNumberInput');
-      const emailInput = document.getElementById('emailInput');
-      const phoneInput = document.getElementById('phoneInput');
-      const deptSelect = document.getElementById('deptSelect');
-      const semesterSelect = document.getElementById('semesterSelect');
-      const passwordInput = document.getElementById('passwordInput');
-      const confirmInput = document.getElementById('confirmPasswordInput');
-
-      const nameFeedback = document.getElementById('nameFeedback');
-      const regFeedback = document.getElementById('regFeedback');
-      const emailFeedback = document.getElementById('emailFeedback');
-      const phoneFeedback = document.getElementById('phoneFeedback');
-      const deptFeedback = document.getElementById('deptFeedback');
-      const semesterFeedback = document.getElementById('semesterFeedback');
-      const passwordFeedback = document.getElementById('passwordFeedback');
-      const confirmFeedback = document.getElementById('confirmFeedback');
-
-      const meterGroup = document.getElementById('passwordMeterGroup');
-      const meterFill = document.getElementById('passwordMeterFill');
-      const meterText = document.getElementById('passwordMeterText');
-
-      // Populate form with current localStorage data
-      function populateForm() {
-        if (!window.SmartCampus) return;
-        const profile = window.SmartCampus.getStudentProfile();
-        
-        nameInput.value = profile.fullName || '';
-        regInput.value = profile.regNumber || '';
-        emailInput.value = profile.email || '';
-        phoneInput.value = profile.phone || '';
-        if (profile.department) deptSelect.value = profile.department;
-        if (profile.semester) semesterSelect.value = profile.semester;
-
-        updateSummaryCard(profile);
-      }
-
-      function updateSummaryCard(profile) {
-        document.getElementById('summaryFullName').textContent = profile.fullName;
-        document.getElementById('summaryRegNumber').textContent = profile.regNumber;
-        document.getElementById('summaryDeptText').textContent = `Department of ${profile.department}`;
-        document.getElementById('summarySemester').textContent = profile.semester;
-        document.getElementById('summaryEmail').textContent = profile.email;
-        document.getElementById('summaryPhone').textContent = profile.phone;
-      }
-
-      // Helper for setting feedback
-      function setFeedback(inputEl, feedbackEl, isValid, message) {
-        if (isValid) {
-          inputEl.classList.remove('is-invalid');
-          inputEl.classList.add('is-valid');
-          feedbackEl.className = 'feedback-msg success';
-          feedbackEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> ${message}`;
-        } else {
-          inputEl.classList.remove('is-valid');
-          inputEl.classList.add('is-invalid');
-          feedbackEl.className = 'feedback-msg error';
-          feedbackEl.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg> ${message}`;
-        }
-        return isValid;
-      }
-
-      function clearFeedback(inputEl, feedbackEl) {
-        inputEl.classList.remove('is-valid', 'is-invalid');
-        feedbackEl.innerHTML = '';
-      }
-
-      // 1. Validate Full Name
-      function validateName() {
-        const val = nameInput.value.trim();
-        if (!val) {
-          return setFeedback(nameInput, nameFeedback, false, 'Full name cannot be left blank.');
-        }
-        if (val.length < 3) {
-          return setFeedback(nameInput, nameFeedback, false, 'Full name must contain at least 3 characters.');
-        }
-        if (!/^[a-zA-Z\s.'-]+$/.test(val)) {
-          return setFeedback(nameInput, nameFeedback, false, 'Name should only contain letters and spaces.');
-        }
-        return setFeedback(nameInput, nameFeedback, true, 'Looks good!');
-      }
-
-      // 2. Validate Reg Number (e.g. FA24-BCS-042 or 2024-CS-042)
-      function validateReg() {
-        const val = regInput.value.trim();
-        if (!val) {
-          return setFeedback(regInput, regFeedback, false, 'Registration number is required.');
-        }
-        const regPattern = /^[A-Za-z0-9]{2,5}-[A-Za-z0-9]{2,5}-[A-Za-z0-9]{2,6}$/;
-        if (!regPattern.test(val)) {
-          return setFeedback(regInput, regFeedback, false, 'Invalid format. Use format like FA24-BCS-042.');
-        }
-        return setFeedback(regInput, regFeedback, true, 'Valid registration ID format.');
-      }
-
-      // 3. Validate University Email
-      function validateEmail() {
-        const val = emailInput.value.trim();
-        if (!val) {
-          return setFeedback(emailInput, emailFeedback, false, 'Email address is required.');
-        }
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-        if (!emailRegex.test(val)) {
-          return setFeedback(emailInput, emailFeedback, false, 'Please enter a valid email address.');
-        }
-        return setFeedback(emailInput, emailFeedback, true, 'Valid email address.');
-      }
-
-      // 4. Validate Phone
-      function validatePhone() {
-        const val = phoneInput.value.trim();
-        if (!val) {
-          return setFeedback(phoneInput, phoneFeedback, false, 'Contact phone number is required.');
-        }
-        const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
-        if (!phoneRegex.test(val.replace(/\s+/g, ''))) {
-          return setFeedback(phoneInput, phoneFeedback, false, 'Please enter a valid phone number (e.g. +923001234567).');
-        }
-        return setFeedback(phoneInput, phoneFeedback, true, 'Valid contact number.');
-      }
-
-      // 5. Validate Password & Strength Meter
-      function validatePassword() {
-        const val = passwordInput.value;
-        if (!val) {
-          meterGroup.style.display = 'none';
-          return setFeedback(passwordInput, passwordFeedback, false, 'Password cannot be empty.');
-        }
-
-        meterGroup.style.display = 'flex';
-        let score = 0;
-        if (val.length >= 8) score++;
-        if (/[A-Z]/.test(val)) score++;
-        if (/[0-9]/.test(val)) score++;
-        if (/[^A-Za-z0-9]/.test(val)) score++;
-
-        if (score <= 1) {
-          meterFill.style.width = '25%';
-          meterFill.style.backgroundColor = 'var(--danger)';
-          meterText.textContent = 'Strength: Weak (Add letters & numbers)';
-        } else if (score === 2 || score === 3) {
-          meterFill.style.width = '65%';
-          meterFill.style.backgroundColor = 'var(--warning)';
-          meterText.textContent = 'Strength: Moderate';
-        } else {
-          meterFill.style.width = '100%';
-          meterFill.style.backgroundColor = 'var(--success)';
-          meterText.textContent = 'Strength: Strong';
-        }
-
-        if (val.length < 8) {
-          return setFeedback(passwordInput, passwordFeedback, false, 'Password must be at least 8 characters.');
-        }
-        if (!/[A-Z]/.test(val) || !/[0-9]/.test(val)) {
-          return setFeedback(passwordInput, passwordFeedback, false, 'Include at least 1 uppercase letter and 1 number.');
-        }
-
-        setFeedback(passwordInput, passwordFeedback, true, 'Secure password!');
-        // If confirm input already has value, recheck match
-        if (confirmInput.value) {
-          validateConfirm();
-        }
-        return true;
-      }
-
-      // 6. Validate Confirm Password
-      function validateConfirm() {
-        const pass = passwordInput.value;
-        const confirm = confirmInput.value;
-        if (!confirm) {
-          return setFeedback(confirmInput, confirmFeedback, false, 'Please re-enter your password to confirm.');
-        }
-        if (pass !== confirm) {
-          return setFeedback(confirmInput, confirmFeedback, false, 'Passwords do not match.');
-        }
-        return setFeedback(confirmInput, confirmFeedback, true, 'Passwords match.');
-      }
-
-      // Attach Real-Time Listeners
-      nameInput.addEventListener('input', validateName);
-      nameInput.addEventListener('blur', validateName);
-
-      regInput.addEventListener('input', validateReg);
-      regInput.addEventListener('blur', validateReg);
-
-      emailInput.addEventListener('input', validateEmail);
-      emailInput.addEventListener('blur', validateEmail);
-
-      phoneInput.addEventListener('input', validatePhone);
-      phoneInput.addEventListener('blur', validatePhone);
-
-      passwordInput.addEventListener('input', validatePassword);
-      passwordInput.addEventListener('blur', validatePassword);
-
-      confirmInput.addEventListener('input', validateConfirm);
-      confirmInput.addEventListener('blur', validateConfirm);
-
-      deptSelect.addEventListener('change', () => {
-        setFeedback(deptSelect, deptFeedback, true, 'Department recorded.');
-      });
-
-      semesterSelect.addEventListener('change', () => {
-        setFeedback(semesterSelect, semesterFeedback, true, 'Semester recorded.');
-      });
-
-      // Reset form button
-      document.getElementById('resetProfileFormBtn').addEventListener('click', () => {
-        populateForm();
-        clearFeedback(nameInput, nameFeedback);
-        clearFeedback(regInput, regFeedback);
-        clearFeedback(emailInput, emailFeedback);
-        clearFeedback(phoneInput, phoneFeedback);
-        clearFeedback(passwordInput, passwordFeedback);
-        clearFeedback(confirmInput, confirmFeedback);
-        meterGroup.style.display = 'none';
-        if (window.SmartCampus && window.SmartCampus.showToast) {
-          window.SmartCampus.showToast('Profile form reset to stored values.', 'info');
-        }
-      });
-
-      // Handle Form Submit
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const isNameValid = validateName();
-        const isRegValid = validateReg();
-        const isEmailValid = validateEmail();
-        const isPhoneValid = validatePhone();
-        const isPasswordValid = validatePassword();
-        const isConfirmValid = validateConfirm();
-
-        if (isNameValid && isRegValid && isEmailValid && isPhoneValid && isPasswordValid && isConfirmValid) {
-          const updatedProfile = {
-            fullName: nameInput.value.trim(),
-            regNumber: regInput.value.trim().toUpperCase(),
-            email: emailInput.value.trim().toLowerCase(),
-            department: deptSelect.value,
-            semester: semesterSelect.value,
-            phone: phoneInput.value.trim()
-          };
-
-          // Save via main.js SmartCampus helper
-          if (window.SmartCampus) {
-            window.SmartCampus.setStudentProfile(updatedProfile);
-            updateSummaryCard(updatedProfile);
-            window.SmartCampus.showToast('Student registration & profile updated successfully!', 'success');
-          }
-
-          // Clear password fields for security
-          passwordInput.value = '';
-          confirmInput.value = '';
-          meterGroup.style.display = 'none';
-          clearFeedback(passwordInput, passwordFeedback);
-          clearFeedback(confirmInput, confirmFeedback);
-        } else {
-          if (window.SmartCampus) {
-            window.SmartCampus.showToast('Please correct the highlighted errors before saving.', 'danger');
-          }
-        }
-      });
-
-      // Initial populate
-      populateForm();
-    });
-  </script>
 </body>
 </html>

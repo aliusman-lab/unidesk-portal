@@ -1,518 +1,354 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weekly Class Schedule | Smart Campus Portal</title>
-  <meta name="description" content="Responsive university class schedule, lecture timetable, room allocations, instructor slots, and lab sessions.">
+  <title>Event Schedule | UniDesk</title>
+  <meta name="description" content="Full event schedule for UniDesk – sessions, workshops, panels, keynotes, times, venues and speakers for March 15, 2026.">
   <link rel="stylesheet" href="./css/style.css">
+  <style>
+    .schedule-full-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.92rem;
+    }
+    .schedule-full-table th {
+      padding: 0.95rem 1rem;
+      text-align: left;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .schedule-full-table td {
+      padding: 1.1rem 1rem;
+      border-bottom: 1px solid var(--border-light);
+      vertical-align: middle;
+    }
+    .schedule-full-table tr:last-child td {
+      border-bottom: none;
+    }
+    .schedule-full-table tr:hover td {
+      background-color: var(--bg-card-subtle);
+    }
+    .time-slot-badge {
+      font-weight: 700;
+      color: var(--text-primary);
+      white-space: nowrap;
+      font-size: 0.9rem;
+    }
+    .session-title-text {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+    .session-speaker-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .badge-room {
+      background-color: var(--bg-input);
+      color: var(--text-secondary);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .track-section-header {
+      padding: 0.75rem 1rem;
+      background: var(--bg-input);
+      border-radius: var(--radius-card-sm);
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin: 1.25rem 0 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Top Portal Header -->
-  <header class="portal-header">
-    <div class="container header-inner">
-      <div class="brand-wrapper">
-        <a href="index.html" style="display: flex; align-items: center; gap: 0.85rem;" aria-label="Smart Campus Portal Home">
-          <div class="brand-crest">SC</div>
-          <div class="brand-text">
-            <span class="brand-title">SMART CAMPUS</span>
-            <span class="brand-subtitle">Student Academic Portal</span>
-          </div>
+  <div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="app-sidebar" id="appSidebar">
+      <div>
+        <a href="index.html" class="sidebar-brand">
+          <span class="sidebar-brand-name">UniDesk</span>
         </a>
+        <ul class="sidebar-nav">
+          <li><a href="index.html" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
+            <span>Home</span>
+          </a></li>
+          <li><a href="about.html" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>
+            <span>About</span>
+          </a></li>
+          <li><a href="schedule.html" class="sidebar-link active">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Schedule</span>
+          </a></li>
+          <li><a href="contact.html" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <span>Contact</span>
+          </a></li>
+          <li><a href="index.html#speakersSection" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Speakers</span>
+          </a></li>
+          <li><a href="index.html#registrationSection" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M9 14l2 2 4-4"></path></svg>
+            <span>Register</span>
+          </a></li>
+        </ul>
       </div>
+      <ul class="sidebar-bottom">
+        <li><a href="documents/schedule.pdf" class="sidebar-link" download>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>Download PDF</span>
+        </a></li>
+        <li><a href="javascript:void(0)" class="sidebar-link" onclick="toggleThemeGlobal()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <span>Theme</span>
+        </a></li>
+      </ul>
+    </aside>
 
-      <!-- Desktop Navigation Links -->
-      <nav class="portal-nav" aria-label="Primary Navigation">
-        <a href="index.html" class="nav-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
-          Dashboard
-        </a>
-        <a href="courses.html" class="nav-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-          Courses
-        </a>
-        <a href="schedule.html" class="nav-link active">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          Schedule
-        </a>
-        <a href="tasks.html" class="nav-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-          Tasks
-        </a>
-        <a href="profile.html" class="nav-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          Profile
-        </a>
-      </nav>
+    <!-- Main Content -->
+    <main class="app-main">
 
-      <!-- Header Controls -->
-      <div class="header-actions">
-        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark mode">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
-
-        <a href="profile.html" class="student-nav-pill" title="View Profile">
-          <div class="student-avatar">AU</div>
-          <div class="student-nav-meta">
-            <span class="student-nav-name">Ali Usman</span>
-            <span class="student-nav-id">FA24-BCS-042</span>
-          </div>
-        </a>
-
-        <!-- Mobile Menu Toggle -->
-        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile Drawer Menu -->
-  <div class="mobile-drawer" id="mobileDrawer">
-    <div class="mobile-drawer-content">
-      <div style="display: flex; align-items: center; gap: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color);">
-        <div class="student-avatar">AU</div>
-        <div>
-          <div class="student-nav-name" style="font-size: 0.95rem;">Ali Usman</div>
-          <div class="student-nav-id">FA24-BCS-042 • Computer Science</div>
+        <div class="search-form">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" class="search-input" id="scheduleSearchInput" placeholder="Search sessions, speakers, venues..." aria-label="Search schedule">
         </div>
-      </div>
-      <a href="index.html" class="nav-link">Dashboard</a>
-      <a href="courses.html" class="nav-link">Courses</a>
-      <a href="schedule.html" class="nav-link active">Schedule</a>
-      <a href="tasks.html" class="nav-link">Tasks</a>
-      <a href="profile.html" class="nav-link">Profile</a>
-    </div>
-  </div>
+        <div class="top-bar-actions">
+          <button type="button" class="icon-btn theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark/light mode">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          <a href="documents/schedule.pdf" class="user-profile-btn" download title="Download Schedule PDF">
+            <span class="user-name">📄 Download Schedule</span>
+          </a>
+        </div>
+      </header>
 
-  <!-- Main Schedule Content -->
-  <main class="main-content">
-    <div class="container">
-      
-      <!-- Page Header -->
-      <section class="page-header">
-        <div class="page-header-row">
+      <!-- Schedule Header Card -->
+      <div class="ui-card" style="background:linear-gradient(135deg,var(--color-black) 0%,#1e293b 100%);color:#fff;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
           <div>
-            <h1 class="page-title">Weekly Class Timetable</h1>
-            <p class="page-desc">Comprehensive schedule for Fall 2026 Semester: lecture times, assigned laboratories, instructor names, and room allocations.</p>
+            <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;color:var(--color-lime);text-transform:uppercase;margin-bottom:0.4rem;">📅 March 15, 2026</p>
+            <h1 style="font-size:1.8rem;font-weight:800;letter-spacing:-0.03em;color:#fff;margin-bottom:0.4rem;">Event Schedule</h1>
+            <p style="font-size:0.88rem;color:rgba(255,255,255,0.65);">Grand University Auditorium · 9:00 AM – 5:30 PM</p>
           </div>
-          <div style="display: flex; align-items: center; gap: 0.75rem;">
-            <button type="button" class="btn btn-secondary btn-sm" onclick="window.print()" title="Print weekly timetable">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-              Print Timetable
-            </button>
-            <span class="badge badge-primary">Term: Fall 2026</span>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <span class="badge-lime-high">24 Sessions</span>
+            <span style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:9999px;padding:0.35rem 0.85rem;font-size:0.76rem;font-weight:700;color:#fff;">3 Tracks</span>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- Day Filter Switcher -->
-      <section class="filter-bar" style="margin-bottom: 1.5rem;">
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary);">Filter Day:</span>
-          <div class="filter-tabs" id="dayFilterTabs" role="tablist">
-            <button type="button" class="tab-btn day-tab active" data-day="all">All Days</button>
-            <button type="button" class="tab-btn day-tab" data-day="Monday">Monday</button>
-            <button type="button" class="tab-btn day-tab" data-day="Tuesday">Tuesday</button>
-            <button type="button" class="tab-btn day-tab" data-day="Wednesday">Wednesday</button>
-            <button type="button" class="tab-btn day-tab" data-day="Thursday">Thursday</button>
-            <button type="button" class="tab-btn day-tab" data-day="Friday">Friday</button>
-          </div>
+      <!-- Track Filter Pills -->
+      <div class="ui-card" style="padding:1rem 1.6rem;">
+        <div class="tasks-filter-pills" id="trackFilterPills">
+          <button type="button" class="pill-tab active" data-track="all">All Sessions</button>
+          <button type="button" class="pill-tab" data-track="keynote">Keynote</button>
+          <button type="button" class="pill-tab" data-track="ai">AI & ML</button>
+          <button type="button" class="pill-tab" data-track="security">Cybersecurity</button>
+          <button type="button" class="pill-tab" data-track="web">Web & Cloud</button>
+          <button type="button" class="pill-tab" data-track="workshop">Workshops</button>
+        </div>
+      </div>
+
+      <!-- Schedule Table -->
+      <div class="ui-card">
+        <div class="card-header-flex">
+          <h2 class="card-title">Full Programme · March 15, 2026</h2>
+          <a href="documents/schedule.pdf" class="btn-dropdown-pill" download>
+            <span>download pdf</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="7 10 12 15 17 10"></polyline></svg>
+          </a>
         </div>
 
-        <div style="font-size: 0.82rem; color: var(--text-muted);">
-          <span>Total Scheduled Sessions: <strong>11 Classes / Week</strong></span>
-        </div>
-      </section>
-
-      <!-- Desktop Table View -->
-      <section class="schedule-table-wrap" aria-label="Timetable Table">
-        <table class="schedule-table" id="desktopScheduleTable">
+        <div class="track-section-header">🌅 Morning Sessions</div>
+        <table class="schedule-full-table" id="scheduleTable">
           <thead>
             <tr>
-              <th scope="col">Time Interval</th>
-              <th scope="col">Day</th>
-              <th scope="col">Course Details</th>
-              <th scope="col">Instructor</th>
-              <th scope="col">Type</th>
-              <th scope="col">Assigned Room</th>
+              <th>Time</th>
+              <th>Session</th>
+              <th>Track</th>
+              <th>Speaker</th>
+              <th>Venue</th>
             </tr>
           </thead>
-          <tbody>
-            <!-- Monday Sessions -->
-            <tr data-day="Monday">
-              <td class="schedule-time-cell">08:30 AM - 10:00 AM</td>
-              <td><span class="badge badge-default">Monday</span></td>
+          <tbody id="scheduleTableBody">
+            <tr data-track="keynote">
+              <td><span class="time-slot-badge">9:00 AM</span></td>
+              <td><span class="session-title-text">Opening Ceremony & Welcome Address</span><span class="session-speaker-text">University Vice Chancellor</span></td>
+              <td><span class="badge-lime-high">Keynote</span></td>
               <td>
-                <div style="font-weight: 700; color: var(--text-primary);">CS-301: Data Structures & Algorithms</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Section BCS-5A • Theory</div>
+                <div class="sched-teacher">
+                  <img class="teacher-avatar-sm" src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=80&auto=format&fit=crop&q=80" alt="VC">
+                  <span>Prof. Adeel Khan</span>
+                </div>
               </td>
-              <td>Prof. Dr. Tariq Mahmood</td>
-              <td><span class="badge badge-primary">Lecture</span></td>
-              <td><span class="schedule-room-badge">CS-Lab 2 (Block C)</span></td>
+              <td><span class="badge-room">Main Hall</span></td>
             </tr>
-
-            <tr data-day="Monday">
-              <td class="schedule-time-cell">11:30 AM - 01:00 PM</td>
-              <td><span class="badge badge-default">Monday</span></td>
+            <tr data-track="keynote ai">
+              <td><span class="time-slot-badge">9:30 AM</span></td>
+              <td><span class="session-title-text">The Future of Artificial Intelligence</span><span class="session-speaker-text">Opening Keynote Address</span></td>
+              <td><span class="badge-lime-high">Keynote</span></td>
               <td>
-                <div style="font-weight: 700; color: var(--text-primary);">SE-310: Software Engineering & Architecture</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Section BCS-5A • Theory</div>
+                <div class="sched-teacher">
+                  <img class="teacher-avatar-sm" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&auto=format&fit=crop&q=80" alt="Dr. Sarah Ahmed">
+                  <span>Dr. Sarah Ahmed</span>
+                </div>
               </td>
-              <td>Assoc. Prof. Michael Chang</td>
-              <td><span class="badge badge-primary">Lecture</span></td>
-              <td><span class="schedule-room-badge">Room 302 (Eng. Wing)</span></td>
+              <td><span class="badge-room">Main Hall</span></td>
             </tr>
-
-            <tr data-day="Monday">
-              <td class="schedule-time-cell">02:00 PM - 04:00 PM</td>
-              <td><span class="badge badge-default">Monday</span></td>
+            <tr data-track="ai">
+              <td><span class="time-slot-badge">11:00 AM</span></td>
+              <td><span class="session-title-text">Machine Learning in Healthcare: Real-World Applications</span><span class="session-speaker-text">Talk · 60 min</span></td>
+              <td><span class="badge-todo">AI & ML</span></td>
               <td>
-                <div style="font-weight: 700; color: var(--text-primary);">CS-301: Data Structures Practical Lab</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Section BCS-5A • Hands-on Coding</div>
+                <div class="sched-teacher">
+                  <img class="teacher-avatar-sm" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&auto=format&fit=crop&q=80" alt="Dr. Sarah Ahmed">
+                  <span>Dr. Sarah Ahmed</span>
+                </div>
               </td>
-              <td>Engr. Hamza Rauf (TA)</td>
-              <td><span class="badge badge-info">Practical Lab</span></td>
-              <td><span class="schedule-room-badge">CS-Lab 2 (Block C)</span></td>
+              <td><span class="badge-room">Hall A</span></td>
             </tr>
-
-            <!-- Tuesday Sessions -->
-            <tr data-day="Tuesday">
-              <td class="schedule-time-cell">10:15 AM - 11:45 AM</td>
-              <td><span class="badge badge-default">Tuesday</span></td>
+            <tr data-track="security workshop">
+              <td><span class="time-slot-badge">11:00 AM</span></td>
+              <td><span class="session-title-text">Hands-On: Building Secure Web Applications</span><span class="session-speaker-text">Workshop · 90 min · Max 40 seats</span></td>
+              <td><span class="badge-in-progress">Workshop</span></td>
               <td>
-                <div style="font-weight: 700; color: var(--text-primary);">CS-304: Database Management Systems</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Section BCS-5A • Theory</div>
+                <div class="sched-teacher">
+                  <img class="teacher-avatar-sm" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=80" alt="Mr. Tariq Mehmood">
+                  <span>Mr. Tariq Mehmood</span>
+                </div>
               </td>
-              <td>Dr. Sarah Jenkins</td>
-              <td><span class="badge badge-primary">Lecture</span></td>
-              <td><span class="schedule-room-badge">Hall B-104 (Academic Wing)</span></td>
+              <td><span class="badge-room">Lab A</span></td>
             </tr>
-
-            <tr data-day="Tuesday">
-              <td class="schedule-time-cell">01:15 PM - 02:45 PM</td>
-              <td><span class="badge badge-default">Tuesday</span></td>
+            <tr data-track="web workshop">
+              <td><span class="time-slot-badge">11:00 AM</span></td>
+              <td><span class="session-title-text">Cloud Deployment with AWS & Azure</span><span class="session-speaker-text">Workshop · 90 min · Max 40 seats</span></td>
+              <td><span class="badge-in-progress">Workshop</span></td>
               <td>
-                <div style="font-weight: 700; color: var(--text-primary);">CS-320: Operating Systems & Concurrency</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Section BCS-5A • Theory</div>
+                <div class="sched-teacher">
+                  <img class="teacher-avatar-sm" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&auto=format&fit=crop&q=80" alt="Ms. Rabia Noor">
+                  <span>Ms. Rabia Noor</span>
+                </div>
               </td>
-              <td>Dr. Elena Rostova</td>
-              <td><span class="badge badge-primary">Lecture</span></td>
-              <td><span class="schedule-room-badge">CS-Lab 1 (Systems Lab)</span></td>
-            </tr>
-
-            <tr data-day="Tuesday">
-              <td class="schedule-time-cell">03:00 PM - 04:30 PM</td>
-              <td><span class="badge badge-default">Tuesday</span></td>
-              <td>
-                <div style="font-weight: 700; color: var(--text-primary);">CS-304: Relational Database & SQL Lab</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Section BCS-5A • Hands-on Querying</div>
-              </td>
-              <td>Lab Engr. Sana Bilal</td>
-              <td><span class="badge badge-info">Practical Lab</span></td>
-              <td><span class="schedule-room-badge">Database Lab 4</span></td>
-            </tr>
-
-            <!-- Wednesday Sessions -->
-            <tr data-day="Wednesday">
-              <td class="schedule-time-cell">08:30 AM - 10:00 AM</td>
-              <td><span class="badge badge-default">Wednesday</span></td>
-              <td>
-                <div style="font-weight: 700; color: var(--text-primary);">CS-301: Data Structures & Algorithms</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Section BCS-5A • Theory</div>
-              </td>
-              <td>Prof. Dr. Tariq Mahmood</td>
-              <td><span class="badge badge-primary">Lecture</span></td>
-              <td><span class="schedule-room-badge">CS-Lab 2 (Block C)</span></td>
-            </tr>
-
-            <tr data-day="Wednesday">
-              <td class="schedule-time-cell">11:30 AM - 01:00 PM</td>
-              <td><span class="badge badge-default">Wednesday</span></td>
-              <td>
-                <div style="font-weight: 700; color: var(--text-primary);">SE-310: Software Engineering & Architecture</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Section BCS-5A • Theory</div>
-              </td>
-              <td>Assoc. Prof. Michael Chang</td>
-              <td><span class="badge badge-primary">Lecture</span></td>
-              <td><span class="schedule-room-badge">Room 302 (Eng. Wing)</span></td>
-            </tr>
-
-            <!-- Thursday Sessions -->
-            <tr data-day="Thursday">
-              <td class="schedule-time-cell">10:15 AM - 11:45 AM</td>
-              <td><span class="badge badge-default">Thursday</span></td>
-              <td>
-                <div style="font-weight: 700; color: var(--text-primary);">CS-304: Database Management Systems</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Section BCS-5A • Theory</div>
-              </td>
-              <td>Dr. Sarah Jenkins</td>
-              <td><span class="badge badge-primary">Lecture</span></td>
-              <td><span class="schedule-room-badge">Hall B-104 (Academic Wing)</span></td>
-            </tr>
-
-            <tr data-day="Thursday">
-              <td class="schedule-time-cell">01:15 PM - 02:45 PM</td>
-              <td><span class="badge badge-default">Thursday</span></td>
-              <td>
-                <div style="font-weight: 700; color: var(--text-primary);">CS-320: Operating Systems & Concurrency</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Section BCS-5A • Theory</div>
-              </td>
-              <td>Dr. Elena Rostova</td>
-              <td><span class="badge badge-primary">Lecture</span></td>
-              <td><span class="schedule-room-badge">CS-Lab 1 (Systems Lab)</span></td>
-            </tr>
-
-            <tr data-day="Thursday">
-              <td class="schedule-time-cell">03:00 PM - 05:00 PM</td>
-              <td><span class="badge badge-default">Thursday</span></td>
-              <td>
-                <div style="font-weight: 700; color: var(--text-primary);">CS-320: POSIX Systems Programming Lab</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Section BCS-5A • Kernel & Threading</div>
-              </td>
-              <td>Systems Lab Faculty Staff</td>
-              <td><span class="badge badge-info">Practical Lab</span></td>
-              <td><span class="schedule-room-badge">CS-Lab 1 (Systems Lab)</span></td>
-            </tr>
-
-            <!-- Friday Sessions -->
-            <tr data-day="Friday">
-              <td class="schedule-time-cell">09:00 AM - 11:00 AM</td>
-              <td><span class="badge badge-default">Friday</span></td>
-              <td>
-                <div style="font-weight: 700; color: var(--text-primary);">SE-310: Enterprise Architecture Case Seminar</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Section BCS-5A • Industry Case Studies</div>
-              </td>
-              <td>Assoc. Prof. Michael Chang</td>
-              <td><span class="badge badge-warning">Seminar</span></td>
-              <td><span class="schedule-room-badge">Seminar Hall 2</span></td>
-            </tr>
-
-            <tr data-day="Friday">
-              <td class="schedule-time-cell">11:15 AM - 12:45 PM</td>
-              <td><span class="badge badge-default">Friday</span></td>
-              <td>
-                <div style="font-weight: 700; color: var(--text-primary);">Department Colloquium & Guest Research Talks</div>
-                <div style="font-size: 0.78rem; color: var(--text-muted);">Open Academic Attendance</div>
-              </td>
-              <td>Visiting Research Scientists</td>
-              <td><span class="badge badge-default">Colloquium</span></td>
-              <td><span class="schedule-room-badge">Auditorium 1</span></td>
+              <td><span class="badge-room">Lab B</span></td>
             </tr>
           </tbody>
         </table>
-      </section>
 
-      <!-- Responsive Mobile Cards View (Ensures Zero Horizontal Overflow on Small Screens) -->
-      <section class="schedule-mobile-cards" id="mobileScheduleCards" aria-label="Mobile Timetable View">
-        
-        <!-- Monday Cards -->
-        <article class="schedule-card" data-day="Monday">
-          <div class="schedule-card-header">
-            <span class="badge badge-default">Monday</span>
-            <span class="schedule-time-cell" style="font-size: 0.85rem;">08:30 AM - 10:00 AM</span>
-          </div>
-          <h3 style="font-size: 1.05rem;">CS-301: Data Structures & Algorithms</h3>
-          <div style="font-size: 0.82rem; color: var(--text-secondary);">Instructor: Prof. Dr. Tariq Mahmood</div>
-          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
-            <span class="badge badge-primary">Lecture</span>
-            <span class="schedule-room-badge">CS-Lab 2</span>
-          </div>
-        </article>
+        <div class="track-section-header">☀️ Afternoon Sessions</div>
+        <table class="schedule-full-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Session</th>
+              <th>Track</th>
+              <th>Speaker</th>
+              <th>Venue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-track="security">
+              <td><span class="time-slot-badge">2:00 PM</span></td>
+              <td><span class="session-title-text">Cybersecurity Challenges in the Digital Age</span><span class="session-speaker-text">Panel Discussion · 4 panelists</span></td>
+              <td><span class="badge-todo">Cybersecurity</span></td>
+              <td>
+                <div class="sched-teacher">
+                  <img class="teacher-avatar-sm" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=80" alt="Mr. Tariq Mehmood">
+                  <span>Tariq + 3 Panelists</span>
+                </div>
+              </td>
+              <td><span class="badge-room">Hall B</span></td>
+            </tr>
+            <tr data-track="ai">
+              <td><span class="time-slot-badge">2:00 PM</span></td>
+              <td><span class="session-title-text">Neural Networks & Deep Learning Fundamentals</span><span class="session-speaker-text">Talk · 60 min</span></td>
+              <td><span class="badge-todo">AI & ML</span></td>
+              <td>
+                <div class="sched-teacher">
+                  <img class="teacher-avatar-sm" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&auto=format&fit=crop&q=80" alt="Ms. Hina Malik">
+                  <span>Ms. Hina Malik</span>
+                </div>
+              </td>
+              <td><span class="badge-room">Hall A</span></td>
+            </tr>
+            <tr data-track="web">
+              <td><span class="time-slot-badge">3:30 PM</span></td>
+              <td><span class="session-title-text">Blockchain & Decentralised Web (Web3)</span><span class="session-speaker-text">Talk · 60 min</span></td>
+              <td><span class="badge-in-progress">Web & Cloud</span></td>
+              <td>
+                <div class="sched-teacher">
+                  <img class="teacher-avatar-sm" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&auto=format&fit=crop&q=80" alt="Dr. Kamran Raza">
+                  <span>Dr. Kamran Raza</span>
+                </div>
+              </td>
+              <td><span class="badge-room">Hall B</span></td>
+            </tr>
+            <tr data-track="security workshop">
+              <td><span class="time-slot-badge">3:30 PM</span></td>
+              <td><span class="session-title-text">Ethical Hacking & Penetration Testing Demo</span><span class="session-speaker-text">Workshop · 60 min · Max 30 seats</span></td>
+              <td><span class="badge-in-progress">Workshop</span></td>
+              <td>
+                <div class="sched-teacher">
+                  <img class="teacher-avatar-sm" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&auto=format&fit=crop&q=80" alt="Mr. Tariq Mehmood">
+                  <span>Mr. Tariq Mehmood</span>
+                </div>
+              </td>
+              <td><span class="badge-room">Lab A</span></td>
+            </tr>
+            <tr data-track="keynote">
+              <td><span class="time-slot-badge">4:30 PM</span></td>
+              <td><span class="session-title-text">Closing Keynote & Award Ceremony</span><span class="session-speaker-text">Best Project Awards · Networking Dinner at 6:00 PM</span></td>
+              <td><span class="badge-lime-high">Keynote</span></td>
+              <td>
+                <div class="sched-teacher">
+                  <img class="teacher-avatar-sm" src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=80&auto=format&fit=crop&q=80" alt="Prof. Adeel Khan">
+                  <span>Prof. Adeel Khan</span>
+                </div>
+              </td>
+              <td><span class="badge-room">Main Hall</span></td>
+            </tr>
+          </tbody>
+        </table>
 
-        <article class="schedule-card" data-day="Monday">
-          <div class="schedule-card-header">
-            <span class="badge badge-default">Monday</span>
-            <span class="schedule-time-cell" style="font-size: 0.85rem;">11:30 AM - 01:00 PM</span>
-          </div>
-          <h3 style="font-size: 1.05rem;">SE-310: Software Engineering & Architecture</h3>
-          <div style="font-size: 0.82rem; color: var(--text-secondary);">Instructor: Assoc. Prof. Michael Chang</div>
-          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
-            <span class="badge badge-primary">Lecture</span>
-            <span class="schedule-room-badge">Room 302</span>
-          </div>
-        </article>
-
-        <article class="schedule-card" data-day="Monday">
-          <div class="schedule-card-header">
-            <span class="badge badge-default">Monday</span>
-            <span class="schedule-time-cell" style="font-size: 0.85rem;">02:00 PM - 04:00 PM</span>
-          </div>
-          <h3 style="font-size: 1.05rem;">CS-301: Data Structures Practical Lab</h3>
-          <div style="font-size: 0.82rem; color: var(--text-secondary);">Instructor: Engr. Hamza Rauf (TA)</div>
-          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
-            <span class="badge badge-info">Practical Lab</span>
-            <span class="schedule-room-badge">CS-Lab 2</span>
-          </div>
-        </article>
-
-        <!-- Tuesday Cards -->
-        <article class="schedule-card" data-day="Tuesday">
-          <div class="schedule-card-header">
-            <span class="badge badge-default">Tuesday</span>
-            <span class="schedule-time-cell" style="font-size: 0.85rem;">10:15 AM - 11:45 AM</span>
-          </div>
-          <h3 style="font-size: 1.05rem;">CS-304: Database Management Systems</h3>
-          <div style="font-size: 0.82rem; color: var(--text-secondary);">Instructor: Dr. Sarah Jenkins</div>
-          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
-            <span class="badge badge-primary">Lecture</span>
-            <span class="schedule-room-badge">Hall B-104</span>
-          </div>
-        </article>
-
-        <article class="schedule-card" data-day="Tuesday">
-          <div class="schedule-card-header">
-            <span class="badge badge-default">Tuesday</span>
-            <span class="schedule-time-cell" style="font-size: 0.85rem;">01:15 PM - 02:45 PM</span>
-          </div>
-          <h3 style="font-size: 1.05rem;">CS-320: Operating Systems & Concurrency</h3>
-          <div style="font-size: 0.82rem; color: var(--text-secondary);">Instructor: Dr. Elena Rostova</div>
-          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
-            <span class="badge badge-primary">Lecture</span>
-            <span class="schedule-room-badge">CS-Lab 1</span>
-          </div>
-        </article>
-
-        <article class="schedule-card" data-day="Tuesday">
-          <div class="schedule-card-header">
-            <span class="badge badge-default">Tuesday</span>
-            <span class="schedule-time-cell" style="font-size: 0.85rem;">03:00 PM - 04:30 PM</span>
-          </div>
-          <h3 style="font-size: 1.05rem;">CS-304: Relational Database & SQL Lab</h3>
-          <div style="font-size: 0.82rem; color: var(--text-secondary);">Instructor: Lab Engr. Sana Bilal</div>
-          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
-            <span class="badge badge-info">Practical Lab</span>
-            <span class="schedule-room-badge">Database Lab 4</span>
-          </div>
-        </article>
-
-        <!-- Wednesday Cards -->
-        <article class="schedule-card" data-day="Wednesday">
-          <div class="schedule-card-header">
-            <span class="badge badge-default">Wednesday</span>
-            <span class="schedule-time-cell" style="font-size: 0.85rem;">08:30 AM - 10:00 AM</span>
-          </div>
-          <h3 style="font-size: 1.05rem;">CS-301: Data Structures & Algorithms</h3>
-          <div style="font-size: 0.82rem; color: var(--text-secondary);">Instructor: Prof. Dr. Tariq Mahmood</div>
-          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
-            <span class="badge badge-primary">Lecture</span>
-            <span class="schedule-room-badge">CS-Lab 2</span>
-          </div>
-        </article>
-
-        <article class="schedule-card" data-day="Wednesday">
-          <div class="schedule-card-header">
-            <span class="badge badge-default">Wednesday</span>
-            <span class="schedule-time-cell" style="font-size: 0.85rem;">11:30 AM - 01:00 PM</span>
-          </div>
-          <h3 style="font-size: 1.05rem;">SE-310: Software Engineering & Architecture</h3>
-          <div style="font-size: 0.82rem; color: var(--text-secondary);">Instructor: Assoc. Prof. Michael Chang</div>
-          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
-            <span class="badge badge-primary">Lecture</span>
-            <span class="schedule-room-badge">Room 302</span>
-          </div>
-        </article>
-
-        <!-- Thursday Cards -->
-        <article class="schedule-card" data-day="Thursday">
-          <div class="schedule-card-header">
-            <span class="badge badge-default">Thursday</span>
-            <span class="schedule-time-cell" style="font-size: 0.85rem;">10:15 AM - 11:45 AM</span>
-          </div>
-          <h3 style="font-size: 1.05rem;">CS-304: Database Management Systems</h3>
-          <div style="font-size: 0.82rem; color: var(--text-secondary);">Instructor: Dr. Sarah Jenkins</div>
-          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
-            <span class="badge badge-primary">Lecture</span>
-            <span class="schedule-room-badge">Hall B-104</span>
-          </div>
-        </article>
-
-        <article class="schedule-card" data-day="Thursday">
-          <div class="schedule-card-header">
-            <span class="badge badge-default">Thursday</span>
-            <span class="schedule-time-cell" style="font-size: 0.85rem;">01:15 PM - 02:45 PM</span>
-          </div>
-          <h3 style="font-size: 1.05rem;">CS-320: Operating Systems & Concurrency</h3>
-          <div style="font-size: 0.82rem; color: var(--text-secondary);">Instructor: Dr. Elena Rostova</div>
-          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
-            <span class="badge badge-primary">Lecture</span>
-            <span class="schedule-room-badge">CS-Lab 1</span>
-          </div>
-        </article>
-
-        <!-- Friday Cards -->
-        <article class="schedule-card" data-day="Friday">
-          <div class="schedule-card-header">
-            <span class="badge badge-default">Friday</span>
-            <span class="schedule-time-cell" style="font-size: 0.85rem;">09:00 AM - 11:00 AM</span>
-          </div>
-          <h3 style="font-size: 1.05rem;">SE-310: Enterprise Architecture Case Seminar</h3>
-          <div style="font-size: 0.82rem; color: var(--text-secondary);">Instructor: Assoc. Prof. Michael Chang</div>
-          <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
-            <span class="badge badge-warning">Seminar</span>
-            <span class="schedule-room-badge">Seminar Hall 2</span>
-          </div>
-        </article>
-      </section>
-
-    </div>
-  </main>
-
-  <!-- Clean Academic Footer -->
-  <footer class="portal-footer">
-    <div class="container footer-inner">
-      <div>
-        <div style="font-family: var(--font-display); font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">
-          Smart Campus Academic Portal
-        </div>
-        <p style="font-size: 0.8rem; margin: 0;">
-          &copy; 2026 University Registrar & Academic Directorate. All rights reserved.
-        </p>
+        <a href="documents/schedule.pdf" class="btn-view-all-black" style="margin-top:1.5rem;" download>📄 Download Full Schedule PDF</a>
       </div>
-      <div class="footer-links">
-        <a href="index.html" class="footer-link">Dashboard</a>
-        <a href="courses.html" class="footer-link">Courses</a>
-        <a href="tasks.html" class="footer-link">Assignments</a>
-        <a href="profile.html" class="footer-link">Student Account</a>
-      </div>
-    </div>
-  </footer>
 
-  <script src="./js/main.js"></script>
+    </main>
+  </div>
+
+  <script src="./js/script.js"></script>
   <script>
-    // Schedule Day Filter Script
-    document.addEventListener('DOMContentLoaded', function () {
-      const dayTabs = document.querySelectorAll('.day-tab');
-      const tableRows = document.querySelectorAll('#desktopScheduleTable tbody tr');
-      const mobileCards = document.querySelectorAll('#mobileScheduleCards .schedule-card');
-
-      dayTabs.forEach(tab => {
-        tab.addEventListener('click', function () {
-          dayTabs.forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-
-          const selectedDay = tab.getAttribute('data-day');
-
-          // Filter Table Rows
-          tableRows.forEach(row => {
-            const rowDay = row.getAttribute('data-day');
-            if (selectedDay === 'all' || rowDay === selectedDay) {
-              row.style.display = '';
-            } else {
-              row.style.display = 'none';
-            }
-          });
-
-          // Filter Mobile Cards
-          mobileCards.forEach(card => {
-            const cardDay = card.getAttribute('data-day');
-            if (selectedDay === 'all' || cardDay === selectedDay) {
-              card.style.display = 'flex';
-            } else {
-              card.style.display = 'none';
-            }
-          });
+    // Track filter functionality
+    document.querySelectorAll('#trackFilterPills .pill-tab').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('#trackFilterPills .pill-tab').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const track = this.dataset.track;
+        document.querySelectorAll('[data-track]').forEach(row => {
+          if (track === 'all' || row.dataset.track.includes(track)) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
         });
       });
     });

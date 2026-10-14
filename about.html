@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | UniDesk</title>
+  <meta name="description" content="Learn about UniDesk – the university's annual technology conference. Meet our speakers, organizers and event mission.">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .speaker-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-card);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .speaker-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+    .speaker-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--color-lime);
+      margin: 0 auto 0.85rem;
+      display: block;
+    }
+    .speaker-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+    .speaker-role {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .speaker-org {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .about-hero {
+      background: linear-gradient(135deg, var(--color-black) 0%, #1e293b 100%);
+      border-radius: var(--radius-card);
+      padding: 2.5rem 2rem;
+      color: #fff;
+      margin-bottom: 1.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: var(--color-lime);
+      opacity: 0.08;
+      border-radius: 50%;
+    }
+    .about-hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--color-lime);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .about-hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.85rem;
+      color: #fff;
+    }
+    .about-hero p {
+      font-size: 0.96rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.65;
+      max-width: 680px;
+    }
+    .stat-pills {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .stat-pill {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-pill);
+      padding: 0.5rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .stat-pill strong {
+      color: var(--color-lime);
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    @media (max-width: 640px) { .info-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="app-layout">
+
+    <!-- Sidebar -->
+    <aside class="app-sidebar" id="appSidebar">
+      <div>
+        <a href="index.html" class="sidebar-brand">
+          <span class="sidebar-brand-name">UniDesk</span>
+        </a>
+        <ul class="sidebar-nav">
+          <li><a href="index.html" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect></svg>
+            <span>Home</span>
+          </a></li>
+          <li><a href="about.html" class="sidebar-link active">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>
+            <span>About</span>
+          </a></li>
+          <li><a href="schedule.html" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Schedule</span>
+          </a></li>
+          <li><a href="contact.html" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <span>Contact</span>
+          </a></li>
+          <li><a href="index.html#speakersSection" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            <span>Speakers</span>
+          </a></li>
+          <li><a href="index.html#registrationSection" class="sidebar-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M9 14l2 2 4-4"></path></svg>
+            <span>Register</span>
+          </a></li>
+        </ul>
+      </div>
+      <ul class="sidebar-bottom">
+        <li><a href="documents/schedule.pdf" class="sidebar-link" download>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>Download PDF</span>
+        </a></li>
+        <li><a href="javascript:void(0)" class="sidebar-link" onclick="toggleThemeGlobal()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <span>Theme</span>
+        </a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="app-main">
+
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <button type="button" class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <div class="search-form">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" class="search-input" placeholder="Search speakers, sessions..." aria-label="Search">
+        </div>
+        <div class="top-bar-actions">
+          <button type="button" class="icon-btn theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark/light mode">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          <span class="user-name" style="font-size:0.88rem;color:var(--text-muted);">About & Speakers</span>
+        </div>
+      </header>
+
+      <!-- Hero Banner -->
+      <div class="about-hero">
+        <p class="about-hero-eyebrow">🎯 University Annual Event</p>
+        <h1>About UniDesk</h1>
+        <p>UniDesk is our university's flagship annual technology conference, bringing together students, faculty, industry professionals and innovators to explore the cutting edge of technology. Hosted on March 15, 2026 at the Grand University Auditorium.</p>
+        <div class="stat-pills">
+          <div class="stat-pill"><strong>500+</strong> Attendees</div>
+          <div class="stat-pill"><strong>24</strong> Sessions</div>
+          <div class="stat-pill"><strong>12</strong> Speakers</div>
+          <div class="stat-pill"><strong>3</strong> Tracks</div>
+          <div class="stat-pill"><strong>1</strong> Day · March 15, 2026</div>
+        </div>
+      </div>
+
+      <!-- About & Mission Cards -->
+      <div class="info-grid">
+        <div class="ui-card">
+          <div class="card-header-flex">
+            <h2 class="card-title">Our Mission</h2>
+          </div>
+          <p style="color:var(--text-secondary);font-size:0.93rem;line-height:1.7;">UniDesk aims to bridge the gap between academic learning and industry practice. We provide a platform where students can interact with leading tech professionals, attend hands-on workshops, and gain insights into real-world technology challenges.</p>
+        </div>
+        <div class="ui-card">
+          <div class="card-header-flex">
+            <h2 class="card-title">Event Tracks</h2>
+          </div>
+          <div class="task-items-list">
+            <div class="task-item">
+              <div class="task-item-top">
+                <span class="task-title">🤖 Artificial Intelligence & ML</span>
+                <span class="badge-lime-high">8 Sessions</span>
+              </div>
+            </div>
+            <div class="task-item">
+              <div class="task-item-top">
+                <span class="task-title">🔐 Cybersecurity & Privacy</span>
+                <span class="badge-todo">8 Sessions</span>
+              </div>
+            </div>
+            <div class="task-item" style="border-bottom:none;padding-bottom:0;">
+              <div class="task-item-top">
+                <span class="task-title">🌐 Web & Cloud Development</span>
+                <span class="badge-in-progress">8 Sessions</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Speakers Grid -->
+      <div class="ui-card" style="margin-top:0;">
+        <div class="card-header-flex">
+          <h2 class="card-title">Speaker Profiles</h2>
+          <span class="badge-lime-high">12 Speakers</span>
+        </div>
+        <div class="speakers-grid">
+          <div class="speaker-card">
+            <img class="speaker-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=160&auto=format&fit=crop&q=80" alt="Dr. Sarah Ahmed">
+            <div class="speaker-name">Dr. Sarah Ahmed</div>
+            <div class="speaker-role">AI Research Lead</div>
+            <div class="speaker-org">DeepMind Pakistan</div>
+            <span class="badge-lime-high" style="margin-top:0.75rem;">Keynote</span>
+          </div>
+          <div class="speaker-card">
+            <img class="speaker-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&auto=format&fit=crop&q=80" alt="Mr. Tariq Mehmood">
+            <div class="speaker-name">Mr. Tariq Mehmood</div>
+            <div class="speaker-role">Cybersecurity Expert</div>
+            <div class="speaker-org">NCCS Pakistan</div>
+            <span class="badge-todo" style="margin-top:0.75rem;">Workshop</span>
+          </div>
+          <div class="speaker-card">
+            <img class="speaker-img" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=160&auto=format&fit=crop&q=80" alt="Ms. Rabia Noor">
+            <div class="speaker-name">Ms. Rabia Noor</div>
+            <div class="speaker-role">Cloud Architect</div>
+            <div class="speaker-org">Microsoft Azure</div>
+            <span class="badge-in-progress" style="margin-top:0.75rem;">Panel</span>
+          </div>
+          <div class="speaker-card">
+            <img class="speaker-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&auto=format&fit=crop&q=80" alt="Dr. Kamran Raza">
+            <div class="speaker-name">Dr. Kamran Raza</div>
+            <div class="speaker-role">Blockchain Researcher</div>
+            <div class="speaker-org">FAST-NUCES</div>
+            <span class="badge-todo" style="margin-top:0.75rem;">Talk</span>
+          </div>
+          <div class="speaker-card">
+            <img class="speaker-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&auto=format&fit=crop&q=80" alt="Ms. Hina Malik">
+            <div class="speaker-name">Ms. Hina Malik</div>
+            <div class="speaker-role">Full Stack Developer</div>
+            <div class="speaker-org">Systems Limited</div>
+            <span class="badge-in-progress" style="margin-top:0.75rem;">Workshop</span>
+          </div>
+          <div class="speaker-card">
+            <img class="speaker-img" src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=160&auto=format&fit=crop&q=80" alt="Prof. Adeel Khan">
+            <div class="speaker-name">Prof. Adeel Khan</div>
+            <div class="speaker-role">IoT Specialist</div>
+            <div class="speaker-org">NUST University</div>
+            <span class="badge-done" style="margin-top:0.75rem;">Keynote</span>
+          </div>
+        </div>
+        <a href="schedule.html" class="btn-view-all-black" style="margin-top:1.5rem;">View Event Schedule</a>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>
